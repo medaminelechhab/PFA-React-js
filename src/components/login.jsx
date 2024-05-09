@@ -30,6 +30,10 @@ export default function login() {
 
 
 
+
+
+
+
             <div className="flex items-center justify-center">
   <div className="border-b border-gray-300 w-full"></div>
   <div className="mx-4  text-gray-600 font-medium">ou</div>
