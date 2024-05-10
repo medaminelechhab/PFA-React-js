@@ -3,36 +3,30 @@ import Fb from '../icons/facebook.png'
 import Gg from '../icons/google.png'
 import In from '../icons/linkedin.png'
 import Git from '../icons/git.png'
+import { Link } from 'react-router-dom' 
 
 
 export default function login() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md w-full space-y-8">
+        <div className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-96 w-full space-y-8">
             <div>
               <h2 className="mt-6 text-3xl font-semibold text-gray-800">Se connecter avec</h2>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center p-0">
   <a href="#" className="flex items-center justify-center bg-white w-12 h-12 rounded-full shadow-md mr-14">
-    <img src={Gg} alt='Google' className="w-8 h-8" />
+    <img src={Gg} alt='Google' className="w-7 h-7" />
   </a>
   <a href="#" className="flex items-center justify-center bg-white w-12 h-12 rounded-full shadow-md mr-14">
-    <img src={Fb} alt='Facebook' className="w-8 h-8" />
+    <img src={Fb} alt='Facebook' className="w-7 h-7" />
   </a>
   <a href="#" className="flex items-center justify-center bg-white w-12 h-12 rounded-full shadow-md mr-14">
-    <img src={In} alt='Instagram' className="w-8 h-8" />
+    <img src={In} alt='Instagram' className="w-7 h-7" />
   </a>
   <a href="#" className="flex items-center justify-center bg-white w-12 h-12 rounded-full shadow-md">
-    <img src={Git} alt='GitHub' className="w-8 h-8" />
+    <img src={Git} alt='GitHub' className="w-7 h-7" />
   </a>
 </div>
-
-
-
-
-
-
-
 
             <div className="flex items-center justify-center">
   <div className="border-b border-gray-300 w-full"></div>
@@ -63,10 +57,10 @@ export default function login() {
                 </div>
     
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-indigo-600 text-sm hover:text-indigo-500">
-                  Mot de passe oublié ?
-                  </a>
-                </div>
+  <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+    Mot de passe oublié ?
+  </Link>
+</div>
               </div>
     
               <div>

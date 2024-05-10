@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-mirza {
+    font-family: 'Mirza', sans-serif;
+  }
+
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+  
+  
