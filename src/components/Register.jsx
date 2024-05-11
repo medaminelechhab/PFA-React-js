@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
 import Apple from '../icons/Apple.png'
 import Google from '../icons/googleR.png'
 import Input from './composants/Input';
+import DividerWithText from './composants/DividerWithText';
+import CustomButton from './composants/CustomButton';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -66,13 +67,7 @@ const Register = () => {
   
 </div>
 
-
-
-        <div className="flex items-center justify-center">
-  <div className="border-b border-gray-300 w-full"></div>
-  <div className="mx-4  text-gray-600 font-medium font-roboto">ou</div>
-  <div className="border-b border-gray-300 w-full"></div>
-</div>
+<DividerWithText text="ou" font="font-roboto" />
 
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -159,10 +154,19 @@ const Register = () => {
           </div>
 
           <div className='flex justify-center'>
-          <button type="button" class=" text-white bg-green-600 hover:bg-green-500 focus:outline-none  font-medium rounded-full text-base px-7 py-2 text-center me-2 -mb-4 font-roboto">Créer un compte</button>
+          <CustomButton
+        text="Créer un compte"
+        bgColor="bg-green-600"
+        hoverBgColor="hover:bg-green-500"
+        textColor="text-white"
+        fontSize="text-base"
+        onClick={() => {
+          // Logique d'inscription
+        }}
+      />
           </div>
           <div className='flex justify-center'>
-            <p className='font-roboto'>Vous avez déjà un compte?</p>&nbsp;<a href='#' className='text-base font-medium text-green-600 font-roboto'>Connectez-vous</a>
+            <p className='font-roboto'>Vous avez déjà un compte?</p>&nbsp;<a href='/Login' className='text-base font-medium text-green-600 font-roboto'>Connectez-vous</a>
           </div>
         </form>
       </div>
