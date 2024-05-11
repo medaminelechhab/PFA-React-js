@@ -1,0 +1,53 @@
+/* Réinitialisation des styles */
+fieldset, legend {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+/* Utilisation de box-sizing pour un meilleur comportement des éléments */
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+/* Grille */
+.air3-grid-container {
+    --template-col: repeat(12,1fr);
+    --row-gap: var(--ws-4x);
+    --col-gap: var(--ws-4x);
+    --gap: var(--row-gap) var(--col-gap);
+    display: grid;
+    grid-template-columns: var(--template-col);
+    grid-gap: var(--gap);
+    gap: var(--gap);
+}
+
+/* Conteneur principal */
+.container, .container-visitor {
+    --container-width: 1280px;
+    --container-ws-x: var(--ws-mobile-x);
+    --container-ws-y: var(--ws-mobile-x);
+    position: relative;
+    width: min(100%, calc(var(--container-width) + var(--container-ws-x)* 2));
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: var(--container-ws-x) !important;
+    padding-left: var(--container-ws-x) !important;
+}
+
+/* Styles de police et de texte */
+body {
+    margin: 0;
+    font-family: var(--font-family-base), "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-base);
+    line-height: 1.428571429;
+    letter-spacing: var(--letter-spacing-base);
+    background-color: var(--bg-body);
+    color: var(--text-dark-on-body);
+}
+
+/* Autres styles spécifiques */
+.text-center {
+    text-align: center !important;
+}
