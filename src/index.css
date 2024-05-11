@@ -1,0 +1,14 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto+Serif:opsz,wdth,wght,GRAD@8..144,77.5,490,100&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.font-mirza {
+    font-family: 'Mirza', sans-serif;
+}
+
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
