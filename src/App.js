@@ -5,6 +5,7 @@ import Login from './components/login';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import JoinPage from "./components/JoinPage";
+import HomePageII from "./components/HomePageII";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={<JoinPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Home" element={<HomePage />} />
-
+            <Route path="/test" element={<HomePageII />} />
 
 
 
