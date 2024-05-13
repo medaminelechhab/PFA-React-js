@@ -7,8 +7,8 @@ import BissellLogo from "../../assets/SVG/bissell.svg";
 
 const HomePage = () => {
   return (
-    <div className="pt-96 ">
-      <div className=" flex  ">
+    <div className="pt-96   ">
+      <div className=" flex overflow-hidden ">
         <div>
           <img
             src={HomePhoto}
@@ -24,7 +24,7 @@ const HomePage = () => {
           />
         </div>
 
-        <div className="absolute  bg-white ml-20 mb-24 bottom-60 rounded-3xl z-10 text-start">
+        <div className="absolute overflow-hidden  bg-white ml-20 mb-24 bottom-60 rounded-3xl z-10 text-start">
           <div className=" h-70 text-black  m-5 max-w-[570px] ">
             <h1 className="text-5xl lg:text-8xl mb-4 font-serif">
               How work should work

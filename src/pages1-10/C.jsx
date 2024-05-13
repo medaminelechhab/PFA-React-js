@@ -1,10 +1,10 @@
 import Items from "../Items";
 import Qct from "../Qct";
 import NavbarSign from "../NavbarSign";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import Input from "../Input";
-import AlertMessage from "./AlertMessage";
+import AlertMessage from "./Add Work Experience";
 const pageData = {
   1: {
     titre: "If you have relevant work experience, add it here.",
@@ -16,32 +16,41 @@ const pageData = {
   },
 };
 export default function C() {
+  const [add, setAdd] = useState(false);
+  const handleChildClick1 = () => {};
+  const handleChildClick = () => {
+    setTimeout(() => {
+      setAdd(true); // Définir add à true après 1 seconde
+    }, 200);
+  };
   return (
-    <div className="flex flex-col min-h-screen">
-      <NavbarSign />
-      <div className="flex-grow  pt-14">
-        <div className="px-28 ">
-          <div>
-            {" "}
-            <Qct
-              titre={pageData[1].titre}
-              sousTitre={pageData[1].sousTitre}
-              message={pageData[1].message}
-              nbr_page={pageData[1].nbr_page}
-            />
-          </div>
+    <div className="   ">
+      <div className=" ">
+        {add ? <AlertMessage onClick={handleChildClick1}></AlertMessage> : null}
+      </div>
+      ;{/* Appliquer l'opacité à cette div */}
+      <div className={`flex flex-col min-h-screen ${add ? "opacity-0" : ""}`}>
+        <NavbarSign />
+        <div className="flex-grow  pt-14">
+          <div className="px-28 ">
+            <div>
+              {" "}
+              <Qct
+                titre={pageData[1].titre}
+                sousTitre={pageData[1].sousTitre}
+                message={pageData[1].message}
+                nbr_page={pageData[1].nbr_page}
+              />
+            </div>
 
-          <div className="max-w-128">
-            {" "}
-            <Items></Items>
+            <div className="max-w-128">
+              {" "}
+              <Items onClick={handleChildClick}></Items>
+            </div>
           </div>
         </div>
+        <Footer nbr_page="1" secend_button={pageData[1].secend_button}></Footer>
       </div>
-      <Footer
-        x="1"
-        nbr_page="2"
-        secend_button={pageData[1].secend_button}
-      ></Footer>
     </div>
   );
 }
