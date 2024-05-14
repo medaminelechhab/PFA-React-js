@@ -4,12 +4,14 @@ import Carac from './components/Carac';
 import Login from './components/login';
 import Register from './components/Register';
 import Caracteristiques from './components/Caracteristiques';
+import Qa from './components/Qa';
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
+          <Route exact path='/qa' element={<Qa/>} />
           <Route exact path='/carac' element={<Carac/>}/>
           <Route exact path='/caracteristiques' element={<Caracteristiques/>}/>
           <Route exact path='/Login' element={<Login/>}/>
