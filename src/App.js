@@ -6,12 +6,14 @@ import Register from './components/Register';
 import Caracteristiques from './components/Caracteristiques';
 import Qa from './components/Qa';
 import Footer from './components/Footer';
+import SkillManager from './components/SkillManager';
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
+          <Route exact path='/skills' element={<SkillManager/>}/>
           <Route exact path='/footer' element={<Footer/>}/>
           <Route exact path='/qa' element={<Qa/>} />
           <Route exact path='/carac' element={<Carac/>}/>
