@@ -5,6 +5,7 @@ import Login from './components/login';
 import Register from './components/Register';
 import Caracteristiques from './components/Caracteristiques';
 import Qa from './components/Qa';
+import Concept from './components/Concept';
 import Footer from './components/Footer';
 import SkillManager from './components/SkillManager';
 
@@ -13,8 +14,10 @@ function App() {
     <div>
       <Router>
         <Routes>
+          <Route exact path='/concept' element={<Concept/>}/>
           <Route exact path='/skills' element={<SkillManager/>}/>
           <Route exact path='/footer' element={<Footer/>}/>
+          <Route exact path='/concept' element={<concept/>}/>
           <Route exact path='/qa' element={<Qa/>} />
           <Route exact path='/carac' element={<Carac/>}/>
           <Route exact path='/caracteristiques' element={<Caracteristiques/>}/>
