@@ -25,7 +25,7 @@ private final ClientService clientService;
 
             return "hello world";
         }
-        @GetMapping("/Getall")
+    @GetMapping("/Getall")
     public List<Client> getall()
         {
             return  jpaClient.findAll();
