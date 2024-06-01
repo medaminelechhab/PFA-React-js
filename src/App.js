@@ -8,12 +8,22 @@ import Qa from './components/Qa';
 import Concept from './components/Concept';
 import Footer from './components/Footer';
 import SkillManager from './components/SkillManager';
+import JobDesc from './components/JobDesc';
+import ChatRoom from './components/ChatRoom';
+import UserProfile from './components/UserProfile';
+import PackageSelector from './components/PackageSelector ';
+import RemplirePackages from './components/RemplirePackages';
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
+          <Route exact path='/remplirpackage' element={<RemplirePackages/>}/>
+          <Route exact path='/packages' element={<PackageSelector/>}/>
+          <Route exact path='/userprofile' element={<UserProfile/>}/>
+          <Route exact path='/chatroom' element={<ChatRoom/>}/> 
+          <Route exact path='/jobdesc' element={<JobDesc/>}/>
           <Route exact path='/concept' element={<Concept/>}/>
           <Route exact path='/skills' element={<SkillManager/>}/>
           <Route exact path='/footer' element={<Footer/>}/>
