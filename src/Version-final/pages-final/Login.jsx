@@ -8,9 +8,8 @@ import InputField from "../../Input";
 import SocialIcons from "../../Version-final/Composent-final/SocialIcons";
 import DividerWithText from "../../Version-final/Composent-final/DividerWithText";
 import CustomButton from "../../Version-final/Composent-final/CustomButton";
-import NavbarSign from "../../NavbarSign";
-
-export default function login() {
+import { Link } from "react-router-dom";
+export default function Login() {
   const socialIcons = [
     { image: Gg, alt: "Google", link: "#" },
     { image: Fb, alt: "Facebook", link: "#" },
@@ -20,7 +19,6 @@ export default function login() {
 
   return (
     <div>
-      <NavbarSign></NavbarSign>
       <div className=" flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-96 w-full space-y-8">
           <div>
@@ -75,23 +73,23 @@ export default function login() {
               </div>
 
               <div className="text-sm">
-                <a className="font-medium text-indigo-600 hover:text-indigo-500">
+                <Link
+                  to="/Sign_Up"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
                   Vous n'avez pas de compte ?
-                </a>
+                </Link>
               </div>
             </div>
 
             <div>
-              <CustomButton
-                text="Se connecter"
-                bgColor="bg-blue-500"
-                hoverBgColor="bg-blue-700"
-                textColor="text-white"
-                fontSize="text-base"
-                onClick={() => {
-                  // Logique de connexion
-                }}
-              />
+              <button
+                className="text-white bg-blue-500 hover:bg-blue-700 focus:outline-none font-medium rounded-full text-base px-6 py-3 font-roboto"
+                //style={{ text-base: text-base }}
+                onClick
+              >
+                Se connecter{" "}
+              </button>
             </div>
           </form>
         </div>

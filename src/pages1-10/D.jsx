@@ -6,28 +6,30 @@ import Footer from "./Footer";
 import Input from "../Input";
 import AlertMessage from "./Add Work Experience"; // Assuming this is your alert component
 import { ProfileContext } from "../Version-final/Auth/ProfileContext";
+import AlertMessage2 from "./Add Work Experience2";
 import { useNavigate } from "react-router-dom";
 const pageData = {
   1: {
-    titre: "If you have relevant work experience, add it here.",
+    titre: "Clients like to know what you know - add your education here.",
     sousTitre:
-      "Freelancers who add their experience are twice as likely to win work. But if you’re just starting out, you can still create a great profile. Just head on to the next page.",
-    nbr_page: 3,
-    secend_button: "Next, add your education",
+      "You don’t have to have a degree. Adding any relevant education helps make your profile more visible.",
+    nbr_page: 4,
+    secend_button: "Thanks, For add education",
   },
 };
 
-export default function C() {
+export default function D() {
   const [add, setAdd] = useState(false);
-  const { Experience, SetExperience } = useContext(ProfileContext);
+  const { Eduction, SetEduction } = useContext(ProfileContext);
   const [error, setError] = useState(""); // State for the error message
   const navigate = useNavigate();
+
   const handleButtonClick = (e) => {
-    if (Experience.length === 0) {
+    if (Eduction.length === 0) {
       setError("This field is required.");
     } else {
       setError("");
-      navigate("/Sign_Up/Refister/freelance/4");
+      navigate("/Sign_Up/Refister/freelance/5");
     }
   };
   const handleChildClick = () => {
@@ -46,7 +48,7 @@ export default function C() {
     <div className="relative">
       {add && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <AlertMessage onClose={handleCloseAlert} />
+          <AlertMessage2 onClose={handleCloseAlert} />
         </div>
       )}
       <div
@@ -64,16 +66,16 @@ export default function C() {
             <div className="">
               <Items
                 onClick={handleChildClick}
-                Value={Experience}
-                setValue={SetExperience}
-              />
+                Value={Eduction}
+                setValue={SetEduction}
+              />{" "}
               {error && <p className="text-red-500">{error}</p>}
             </div>
           </div>
         </div>
       </div>
       <Footer
-        prog={3}
+        prog={4}
         secend_button="Next, add your education"
         onSecendButtonClick={handleButtonClick}
       />

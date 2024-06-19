@@ -6,8 +6,8 @@ export default function Qct({ titre, sousTitre, message, nbr_page }) {
   return (
     <div className="space-y-5">
       <div className="font-semibold tracking-wide flex items-center">
-        <div className="mr-3 text-xs"> {nbr_page}/10</div>
-        {message.length > 0 ? (
+        {nbr_page ? <div className="mr-3 text-sm"> {nbr_page}/10</div> : null}
+        {message ? (
           <div className="flex items-center">
             <div className="text-xs mr-2 font-normal">{message}</div>
             <img src={time} className="size-4 mr-2" />

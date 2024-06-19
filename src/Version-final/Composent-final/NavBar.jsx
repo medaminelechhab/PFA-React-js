@@ -1,19 +1,24 @@
 import React from "react";
 import upworkSVG from "../../assets/SVG/upwork.svg";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <nav className="    fixed  inset-x-0 top-0  bg-white shadow-sm  flex justify-between items-center h-16 border-b-2 ">
-      {" "}
+    <nav className=" bg-white  fixed inset-x-0 top-0  shadow-sm flex justify-between items-center h-16 border-b-2 z-50">
       {/* Left section */}
       <div className="flex items-center ml-6 text-sm font-semibold">
-        <img src={upworkSVG} alt="Upwork Logo" className="h-8 w-20" />
-        <div className="ml-8 cursor-pointer hover:text-green-600">
+        <Link to={"/"}>
+
+          <img src={upworkSVG} alt="Upwork Logo" className="h-8 w-20" />
+
+        </Link>
+
+        <div className="ml-8  cursor-pointer hover:text-green-600">
           Find Talent
         </div>
-        <div className="ml-8 cursor-pointer hover:text-green-600">
+        <Link to={"/Find_Job"} className="ml-8 cursor-pointer hover:text-green-600">
           Find Work
-        </div>
+        </Link>
         <div className="ml-8 cursor-pointer hover:text-green-600">
           Why Upwork
         </div>
@@ -24,7 +29,7 @@ export default function NavBar() {
       {/* Right section */}
       <div className="flex items-center">
         {/* Search bar */}
-        <div className="flex px-4 py-2 rounded-full border-2 border-gray-300 shadow-sm  items-center font-semibold mr-8">
+        <div className="flex px-4 py-2 rounded-full border-2 border-gray-300 shadow-sm items-center font-semibold mr-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 192.904 192.904"
@@ -42,17 +47,23 @@ export default function NavBar() {
 
         {/* Log In and Sign Up */}
         <div className="flex pr-6 items-center">
-          <div className="mr-8 font-semibold text-sm cursor-pointer">
+          <Link
+            to="/Login"
+            className="mr-8 font-semibold text-sm cursor-pointer"
+          >
             Log In
-          </div>
-          <div
+          </Link>
+
+          <Link
+            to="/Sign_Up"
             className="w-24 h-10 mr-3 cursor-pointer text-white text-sm font-semibold rounded-full flex items-center justify-center hover:bg-green-600"
             style={{ backgroundColor: "#1C8704" }}
           >
             Sign Up
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
+
   );
 }

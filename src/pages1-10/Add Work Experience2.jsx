@@ -4,28 +4,31 @@ import moisData from "./mois.json";
 import apiService from "../Version-final/Service/apiService";
 import { useNavigate } from "react-router-dom";
 import { ProfileContext } from "../Version-final/Auth/ProfileContext";
-export default function AlertMessage({ onClose }) {
+export default function AlertMessage2({ onClose }) {
   const [countries, setCountries] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
-    company: "",
-    location: "",
-    country: "",
-    startMonth: "",
-    startYear: "",
-    endMonth: "",
-    endYear: "",
+    Degree: "",
+    Field_of_Study: "",
+    Dates_Attended: "",
+    To_date: "",
+
     description: "",
   });
   const navigate = useNavigate();
-  const { Experience, SetExperience } = useContext(ProfileContext);
+  const { Eduction, SetEduction } = useContext(ProfileContext);
   const startYear = 1990;
   const endYear = 2024;
   const years = Array.from(
     { length: endYear - startYear + 1 },
     (_, index) => startYear + index
   );
-
+  const startYear1 = 2024;
+  const endYear1 = 2034;
+  const years1 = Array.from(
+    { length: endYear1 - startYear1 + 1 },
+    (_, index) => startYear1 + index
+  );
   useEffect(() => {
     getData();
   }, []);
@@ -40,6 +43,7 @@ export default function AlertMessage({ onClose }) {
     const countryNames = response.map((country) => country.name.common);
     setCountries(countryNames);
   };
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevFormData) => ({
@@ -49,7 +53,8 @@ export default function AlertMessage({ onClose }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    SetExperience((prev) => [...prev, formData]);
+    SetEduction((prev) => [...prev, formData]);
+    console.log(formData);
     onClose();
   };
 
@@ -57,103 +62,61 @@ export default function AlertMessage({ onClose }) {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white border-2 shadow-2xl rounded-3xl w-128 h-[680px] p-6">
         <div className="border-b-2 pb-4 border-gray-400 text-4xl font-semibold text-black mb-6">
-          Add Work Experience
+          Add Education History
         </div>
         <form onSubmit={handleSubmit} className="">
           <div className="overflow-y-auto h-[490px] space-y-6">
             <Input
               desgine_label="text-ms font-semibold"
-              label="Title *"
+              label="School *"
               label_spaceinput="2"
               id="title"
               name="title"
               type="text"
-              placeholder="Ex: Software Engineer"
+              placeholder="Ex: Emsi"
               required
               value={formData.title}
               onChange={handleInputChange}
             />
             <Input
               desgine_label="text-ms font-semibold"
-              label="Company *"
+              label="Degree *"
               label_spaceinput="2"
-              id="company"
-              name="company"
+              id="Degree"
+              name="Degree"
               type="text"
-              placeholder="Ex: Microsoft"
+              placeholder="Ex: Bac"
               required
-              value={formData.company}
+              value={formData.Degree}
               onChange={handleInputChange}
             />
-            <div className="flex space-x-10">
+            <Input
+              desgine_label="text-ms font-semibold"
+              label="Field of Study"
+              label_spaceinput="2"
+              id="Field_of_Study"
+              name="Field_of_Study"
+              type="text"
+              required
+              placeholder="Ex: London"
+              value={formData.Field_of_Study}
+              onChange={handleInputChange}
+            />
+            <div className="flex space-x-12">
               <div className="w-1/2">
+                {" "}
                 <Input
                   desgine_label="text-ms font-semibold"
-                  label="Location"
+                  label="Dates Attended"
                   label_spaceinput="2"
-                  id="location"
-                  name="location"
-                  type="text"
-                  placeholder="Ex: London"
-                  value={formData.location}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="w-1/2">
-                <Input
-                  label="Pays"
-                  id="country"
-                  name="country"
+                  id="Dates_Attended"
+                  name="Dates_Attended"
                   type="select"
                   type_input="select"
-                  required
-                  value={formData.country}
+                  value={formData.Dates_Attended}
                   onChange={handleInputChange}
                 >
-                  <option value="">Sélectionnez un pays</option>
-                  {countries.map((country, index) => (
-                    <option key={index} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </Input>
-              </div>
-            </div>
-            <div className="flex space-x-3">
-              <div className="w-1/2">
-                <Input
-                  label="Start Date"
-                  desgine_label="text-ms font-semibold"
-                  label_spaceinput="2"
-                  id="startMonth"
-                  name="startMonth"
-                  type="select"
-                  type_input="select"
-                  required
-                  value={formData.startMonth}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Month</option>
-                  {moisData.map((m) => (
-                    <option key={m.id} value={m.name}>
-                      {m.name}
-                    </option>
-                  ))}
-                </Input>
-              </div>
-              <div className="w-1/2">
-                <Input
-                  desgine_label="text-ms font-semibold"
-                  label_spaceinput="2"
-                  id="startYear"
-                  name="startYear"
-                  type="select"
-                  type_input="select"
-                  required
-                  value={formData.startYear}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Year</option>
+                  <option value="">Start_Date</option>
                   {years.map((year) => (
                     <option key={year} value={year}>
                       {year}
@@ -162,40 +125,19 @@ export default function AlertMessage({ onClose }) {
                 </Input>
               </div>
               <div className="w-1/2">
-                <Input
-                  label="End Date"
-                  desgine_label="text-ms font-semibold"
-                  label_spaceinput="2"
-                  id="endMonth"
-                  name="endMonth"
-                  type="select"
-                  type_input="select"
-                  required
-                  value={formData.endMonth}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Month</option>
-                  {moisData.map((m) => (
-                    <option key={m.id} value={m.name}>
-                      {m.name}
-                    </option>
-                  ))}
-                </Input>
-              </div>
-              <div className="w-1/2">
+                {" "}
                 <Input
                   desgine_label="text-ms font-semibold"
                   label_spaceinput="2"
-                  id="endYear"
-                  name="endYear"
+                  id="To_date"
+                  name="To_date"
                   type="select"
                   type_input="select"
-                  required
-                  value={formData.endYear}
+                  value={formData.To_date}
                   onChange={handleInputChange}
                 >
-                  <option value="">Year</option>
-                  {years.map((year) => (
+                  <option value="">To or expectedd graduation year</option>
+                  {years1.map((year) => (
                     <option key={year} value={year}>
                       {year}
                     </option>
