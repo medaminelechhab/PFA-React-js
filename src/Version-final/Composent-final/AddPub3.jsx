@@ -1,10 +1,14 @@
-import Items from "../Items";
-import Qct from "../Qct";
-import Footer from "./Footer";
-import { Link } from "react-router-dom";
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { ProfileContext } from "../Version-final/Auth/ProfileContext";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Items from "../../Items";
+import Qct from "../../Qct";
+import NavbarSign from "../../NavbarSign";
+import Footer from "../../pages1-10/Footer";
+import Input from "../../Input";
+import TagsInput from "react-tagsinput";
+import "react-tagsinput/react-tagsinput.css";
+import "tailwindcss/tailwind.css";
+import { AnnonceContext } from "../Auth/AnnonceContext";
 const data = {
   "Gébs": ["Plafonneur", "Staffeur", "Stucateur", "Moulurier"],
   "Maçon": ["Maçon en rénovation", "Maçon de pierres", "Maçon en construction neuve", "Maçon en monuments historiques"],
@@ -37,6 +41,8 @@ const data = {
   "Coiffeur": ["Coiffeur visagiste", "Coiffeur coloriste", "Coiffeur barbier", "Coiffeur styliste"],
   "Horloger": ["Horloger réparateur", "Horloger créateur", "Horloger bijoutier", "Horloger restaurateur"],
 };
+
+
 const pageData = {
   1: {
     titre: "What are the main services you offer?",
@@ -45,12 +51,12 @@ const pageData = {
     nbr_page: 7,
   },
 };
-export default function G() {
+export default function AddPub2() {
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { services, Setservices } = useContext(ProfileContext);
+  const { services, setServices } = useContext(AnnonceContext);
   const navigate = useNavigate();
 
   const handleTaskSelection = (category, task) => {
@@ -87,8 +93,9 @@ export default function G() {
   };
 
   const handleSend = () => {
-    Setservices(selectedTasks);
-    navigate("/Sign_Up/Register/freelance/8");
+    setServices(selectedTasks);
+    navigate("/Add_pub4")
+
   };
 
   const handleClickOutside = (event) => {
@@ -111,14 +118,13 @@ export default function G() {
   const selectedTasksString = selectedTasks.map((task) => task.task).join(", ");
 
   return (
-    <div className="flex flex-col h-auto">
+    <div className="flex flex-col ml-80 mt-10 h-auto">
       <div className="flex-grow  pt-10 pl-24  max-w-[820px] ">
         <div className="">
           <Qct
             titre={pageData[1].titre}
             sousTitre={pageData[1].sousTitre}
             message={pageData[1].message}
-            nbr_page={pageData[1].nbr_page}
           />
         </div>
         <div>

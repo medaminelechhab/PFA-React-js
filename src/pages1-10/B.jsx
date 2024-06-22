@@ -25,7 +25,7 @@ export default function B() {
       setError("This field is required.");
     } else {
       setError("");
-      navigate("/Sign_Up/Refister/freelance/3"); // Corrected the route spelling
+      navigate("/Sign_Up/Register/freelance/3"); // Corrected the route spelling
     }
   };
 

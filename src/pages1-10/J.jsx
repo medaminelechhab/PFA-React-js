@@ -1,6 +1,8 @@
 import Items from "../Items";
 import Qct from "../Qct";
 import Footer from "./Footer";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Cih from "../assets/images/Cih.png";
 import { ProfileContext } from "../Version-final/Auth/ProfileContext";
 import { useContext } from "react";
@@ -12,7 +14,17 @@ const pageData = {
 
 export default function J() {
   const { services } = useContext(ProfileContext);
-  const handleButtonClick = () => {};
+  const navig = useNavigate()
+  const handleButtonClick = () => {
+    navig("/Sign_Up/Register/freelance/10")
+
+
+
+
+
+
+
+  };
 
   return (
     <div className="flex flex-col h-auto">

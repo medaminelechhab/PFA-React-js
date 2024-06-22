@@ -3,27 +3,27 @@ import Apple from "../../assets/images/Apple.png";
 import Google from "../../assets/images/googleR.png";
 import Input from "../../Input";
 import DividerWithText from "../../Version-final/Composent-final/DividerWithText";
-import { ProfileContext } from "../Auth/ProfileContext";
 import { useNavigate } from "react-router-dom";
+import { ProfileContext } from "../Auth/ProfileContext";
+
 const Register = () => {
+  const { Role } = useContext(ProfileContext);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    username: "",
     password: "",
-    country: "",
+    country: "", // Utilisation de "country" au lieu de "Pays"
+    role: "client" // Définition du rôle par défaut
   });
 
   const [countries, setCountries] = useState([]);
-  const { Role, SetRole } = useContext(ProfileContext);
-  const navig = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Effectue une requête GET à l'API REST Countries pour obtenir la liste des pays
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
       .then((data) => {
-        // Extrait les noms des pays de la réponse et les stocke dans un tableau
         const countryNames = data.map((country) => country.name.common);
         setCountries(countryNames);
       })
@@ -38,21 +38,50 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log("first", services);
+
+    console.log('Données à envoyer : ', formData);
+
+    try {
+      const response = await fetch('http://localhost:8081/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("User registre")
+      }
+      if (response.status == 409) {
+        alert("user deja excite")
+      }
+
+
+
+      // Gérer la réponse du serveur, par exemple, enregistrer un token
+      // localStorage.setItem('token', result.token);
+
+      // Naviguer vers une autre page après l'inscription
+      // navigate('/home');
+
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de la requête : ', error);
+    }
     if (Role == "client") {
-      navig("/");
+      navigate('/Login');
     } else {
-      navig("/Sign_Up/Refister/freelance/1");
+      navigate('/Sign_Up/Register/freelance/1');
     }
   };
 
   return (
-    <div className="min-h- flex items-center justify-center bg-white  px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full space-y-8">
         <div>
-          <h2 className=" text-center text-5xl font-serif text-gray-900 font-mirza">
+          <h2 className="text-center text-5xl font-serif text-gray-900 font-mirza">
             Sign up to hire talent
           </h2>
         </div>
@@ -112,12 +141,12 @@ const Register = () => {
           <div>
             <Input
               label="Adresse email"
-              id="email"
-              name="email"
+              id="username"
+              name="username"
               type="email"
               autoComplete="email"
               required
-              value={formData.email}
+              value={formData.username}
               onChange={handleChange}
             />
           </div>
@@ -140,7 +169,6 @@ const Register = () => {
               id="country"
               name="country"
               type="select"
-              autoComplete="country"
               type_input="select"
               required
               value={formData.country}
@@ -178,13 +206,13 @@ const Register = () => {
 
           <div className="flex justify-center">
             <button
-              className="text-white bg-green-600  hover:bg-green-500 focus:outline-none font-medium rounded-full text-base px-6 py-3 font-roboto"
-              // style={{ fontSize: text - base }}
-              onClick={() => {}}
+              className="text-white bg-green-600 hover:bg-green-500 focus:outline-none font-medium rounded-full text-base px-6 py-3 font-roboto"
+              type="submit"
             >
               Créer un compte
             </button>
           </div>
+
           <div className="flex justify-center">
             <p className="font-roboto">Vous avez déjà un compte?</p>&nbsp;
             <a

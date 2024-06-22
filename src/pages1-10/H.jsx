@@ -8,16 +8,15 @@ import CardPircing from "./CardPircing";
 export default function H() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const { services, Setservices } = useContext(ProfileContext);
+  const { setPack, Pack } = useContext(ProfileContext);
 
-  console.log("first", services.length);
 
   const handleButtonClick = () => {
     if (services.length == 0) {
       setError("This field is required.");
     } else {
       setError("");
-      navigate("/Sign_Up/Refister/freelance/9");
+      navigate("/Sign_Up/Register/freelance/9");
     }
   };
 
@@ -39,7 +38,7 @@ export default function H() {
               A="Show Profile"
               B="7/7 24/24 services"
               C="Show artisone"
-              isSelected={services === "Standard"}
+              isSelected={Pack === "Standard"}
             />
             <CardPircing
               type="Month"
@@ -49,7 +48,7 @@ export default function H() {
               A="Show Profile"
               B="7/7 24/24 services"
               C="Show artisone"
-              isSelected={services === "Month"}
+              isSelected={Pack === "Month"}
             />
             <CardPircing
               type="Year"
@@ -58,7 +57,7 @@ export default function H() {
               A="Show Profile"
               B="7/7 24/24 services"
               C="Show artisone"
-              isSelected={services === "Year"}
+              isSelected={Pack === "Year"}
             />
           </div>
           {error && <p className="text-red-500">{error}</p>}

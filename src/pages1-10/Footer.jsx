@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from 'react';
 
 export default function Footer({
   prog,
   secend_button,
   path,
   onSecendButtonClick,
+  onSecendButtonClick2,
+  button2
 }) {
   const progressBarWidth = `${(prog / 10) * 100}%`;
   const navigate = useNavigate();
@@ -26,6 +29,13 @@ export default function Footer({
         >
           Back
         </div>
+        {button2 > 1 ? (
+          <div onClick={onSecendButtonClick2}>
+            <div className="mr-4 border-2 w-auto h-auto py-2 px-5 cursor-pointer text-black border-green-500 rounded-full  flex items-center justify-center">
+              submit
+            </div>
+          </div>
+        ) : null}
         {prog > 1 ? (
           <div onClick={onSecendButtonClick}>
             <div className="mr-4 border-2 w-auto h-auto py-2 px-5 cursor-pointer bg-green-700 text-white rounded-full border-gray-200 flex items-center justify-center">

@@ -27,7 +27,7 @@ export default function C() {
       setError("This field is required.");
     } else {
       setError("");
-      navigate("/Sign_Up/Refister/freelance/4");
+      navigate("/Sign_Up/Register/freelance/4");
     }
   };
   const handleChildClick = () => {
@@ -50,9 +50,8 @@ export default function C() {
         </div>
       )}
       <div
-        className={`flex flex-col h-[665px] transition-opacity duration-300 ${
-          add ? "blur-sm" : ""
-        }`}
+        className={`flex flex-col h-[665px] transition-opacity duration-300 ${add ? "blur-sm" : ""
+          }`}
       >
         <div className="flex-grow pt-5">
           <div className="px-28">

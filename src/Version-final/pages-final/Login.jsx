@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState } from "react";
 import Fb from "../../assets/images/facebook.png";
 import Gg from "../../assets/images/googleR.png";
 import In from "../../assets/images/linkedin.png";
@@ -9,7 +8,13 @@ import SocialIcons from "../../Version-final/Composent-final/SocialIcons";
 import DividerWithText from "../../Version-final/Composent-final/DividerWithText";
 import CustomButton from "../../Version-final/Composent-final/CustomButton";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Hook pour naviguer entre les pages
+
   const socialIcons = [
     { image: Gg, alt: "Google", link: "#" },
     { image: Fb, alt: "Facebook", link: "#" },
@@ -17,9 +22,56 @@ export default function Login() {
     { image: Git, alt: "GitHub", link: "#" },
   ];
 
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Empêche le rechargement de la page
+
+    const data3 = {
+      username: email,
+      password: password,
+    };
+
+    console.log('JSON à envoyer : ', data3); // Affichez le JSON que vous envoyez pour le débogage
+
+    try {
+      const response = await fetch('http://localhost:8081/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data3),
+      });
+
+
+      if (response.ok) {
+        const tokens = await response.json();
+
+        localStorage.setItem('refreshToken', tokens['refresh-token']);
+        localStorage.setItem('accessToken', tokens['access-token']);
+        localStorage.setItem('id', tokens['id'])
+
+        localStorage.setItem('Login', true)
+
+        console.log("refreshToken = " + localStorage.getItem('refreshToken'))
+        console.log("accessToken = " + localStorage.getItem('accessToken'))
+        console.log("id = " + localStorage.getItem('id'))
+
+        // Stocker le token dans le local storage
+
+        // Naviguer vers une autre page, par exemple la page d'accueil
+        navigate("/")
+
+
+      } else {
+        // Gérer les erreurs ici, par exemple afficher un message à l'utilisateur
+        console.error('Erreur lors de la connexion : ', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de la requête : ', error);
+    }
+  };
   return (
     <div>
-      <div className=" flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-96 w-full space-y-8">
           <div>
             <h2 className="mt-6 text-3xl font-semibold text-gray-800">
@@ -31,9 +83,9 @@ export default function Login() {
 
           <DividerWithText text="ou" />
 
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
-            <div className="rounded-md shadow-sm ">
+            <div className="rounded-md shadow-sm">
               <div className="mb-5">
                 <InputField
                   id="email-address"
@@ -42,6 +94,8 @@ export default function Login() {
                   label_spaceinput="4"
                   autoComplete="email"
                   placeholder=""
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -52,6 +106,8 @@ export default function Login() {
                   type="password"
                   autoComplete="current-password"
                   placeholder=""
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -84,9 +140,8 @@ export default function Login() {
 
             <div>
               <button
+                type="submit"
                 className="text-white bg-blue-500 hover:bg-blue-700 focus:outline-none font-medium rounded-full text-base px-6 py-3 font-roboto"
-                //style={{ text-base: text-base }}
-                onClick
               >
                 Se connecter{" "}
               </button>

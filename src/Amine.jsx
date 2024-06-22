@@ -2,6 +2,7 @@ import Items from "./Items";
 import Qct from "./Qct";
 import NavbarSign from "./NavbarSign";
 import NavBar from "../src/Version-final/Composent-final/NavBar";
+import React from 'react';
 
 import HomePage from "../src/Version-final/pages-final/HomePage";
 import Caracteristiques from "./Version-final/Composent-final/Caracteristiques";

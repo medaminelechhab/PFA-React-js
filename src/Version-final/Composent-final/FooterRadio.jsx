@@ -2,19 +2,21 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ProfileContext } from "../Auth/ProfileContext";
+import React from "react";
+
 export default function FooterRadio({ type }) {
   const { Role, SetRole } = useContext(ProfileContext);
   const navige = useNavigate();
   const handlclick = (e) => {
     SetRole(type);
-    navige("/Sign_Up/refister");
+    navige("/Sign_Up/Register");
   };
   return (
     <div>
       <div>
         {" "}
         {type ? (
-          <button onClick={handlclick} to="/Sign_Up/Refister">
+          <button onClick={handlclick} to="/Sign_Up/Register">
             <div className="  bg-green-700  shadow-md text-white w-auto px-5 h-10 pt-1 rounded-full  text-center  text-xl  font-extraligh ">
               Join as {type}
             </div>

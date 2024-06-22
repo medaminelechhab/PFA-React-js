@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Input from "../../Input";
 import Qct from "../../Qct";
 import Footer from "../../pages1-10/Footer";
 import { useNavigate } from "react-router-dom";
+import React from 'react';
 
+import { AnnonceContext } from "../Auth/AnnonceContext";
 const pageData = {
     1: {
         titre: "Quel est votre besoin ?",
@@ -12,13 +14,13 @@ const pageData = {
 
 export default function AddPub1() {
     const [error, setError] = useState(""); // State for the error message
-    const [professional, setProfessional] = useState(""); // Corrected state hook
     const usenavige = useNavigate()
+    const { titre, setTitre } = useContext(AnnonceContext);
 
     const handleButtonClick = (e) => {
         e.preventDefault(); // Prevent default form submission
 
-        if (professional.length == 0) { // Corrected comparison
+        if (titre.length == 0) { // Corrected comparison
             setError("Veuillez entrer une profession.");
         } else {
             setError("");
@@ -39,9 +41,9 @@ export default function AddPub1() {
                 </div>
                 <input
                     type="text"
-                    value={professional}
-                    onChange={(e) => setProfessional(e.target.value)}
-                    placeholder="Ex: site e-commerce, application iPhone, Blog"
+                    value={titre}
+                    onChange={(e) => setTitre(e.target.value)}
+                    placeholder="Ex : Je cherche un peintre pour ma maison, Rénovez mon salon..."
                     className="appearance-none cursor-pointer relative block w-[600px] mt-3 px-3 py-4 rounded-2xl border-2 focus:outline-none  focus:border-green-500"
                     id="projet"
                 />

@@ -24,7 +24,7 @@ export default function F() {
       setError("This field is required.");
     } else {
       setError("");
-      navigate("/Sign_Up/Refister/freelance/7");
+      navigate("/Sign_Up/Register/freelance/7");
     }
   };
 

@@ -11,9 +11,9 @@ export default function CardPircing({
   onTypeSelect,
   isSelected,
 }) {
-  const { services, Setservices } = useContext(ProfileContext);
+  const { setPack, Pack } = useContext(ProfileContext);
   const handleClick = () => {
-    Setservices(type);
+    setPack(type);
   };
 
   return (
